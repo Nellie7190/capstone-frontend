@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState } from 'react'
 
-const CreateReview = (props) => {
-    console.log(props)
-    const [review, setReview] = useState({
+const CreatePlace = (props) => {
+    // const place = props.place
+
+    const [place, setPlace] = useState({
         name: '',
         address: '',
         isBlackOwned: '',
@@ -15,13 +16,13 @@ const CreateReview = (props) => {
 
 
     const handleChange = (evt) => {
-        setReview({ ...review, [evt.target.name]: evt.target.value });
+        setPlace({ ...place, [evt.target.name]: evt.target.value });
     };
 
     const handleCreateSubmit = (evt) => {
         evt.preventDefault();
-        props.createReview(review)
-        setReview({
+        props.createPlace(place)
+        setPlace({
             name: '',
             address: '',
             isBlackOwned: '',
@@ -36,22 +37,20 @@ const CreateReview = (props) => {
     return (
         <section>
             <form onSubmit={handleCreateSubmit}>
-                <h3>Required</h3>
-                Rating
+                Name
                 <input 
-                    type="number"
-                    name="rating"
-                    placeholder="Rate 1-5"
+                    type="text"
+                    name="name"
+                    placeholder="Type a NAME"
                     onChange={handleChange}
                 /><br />
-                Comment
+                Address
                 <input
-                    type="textarea"
-                    name="comment"
-                    placeholder="Why this rating?"
+                    type="text"
+                    name="address"
+                    placeholder="Type places ADDRESS"
                     onChange={handleChange}
                 /><br />
-                <h3>Optional</h3>
                 Is this place Black Owned?
                 <input
                     type="checkbox"
@@ -88,10 +87,10 @@ const CreateReview = (props) => {
                     name="hoursOpen"
                     onChange={handleChange}
                 />
-                <input type='submit' value="+ Add Review" />
+                <input type='submit' value="+ Add Place" />
             </form>
         </section>
     )
 }
 
-export default CreateReview
+export default CreatePlace

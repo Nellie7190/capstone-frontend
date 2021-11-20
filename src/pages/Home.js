@@ -1,11 +1,26 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 const Home = (props) => {
     console.log(props)
-    const handleDeletePlace = () => {
-        props.deletePlace(props.places[2].id);
-        console.log("it really happened!")
+
+    // const params = useParams();
+    // const id = params.id;
+    // console.log(id)
+
+    // const place = props.places.find(p => p.id == id);
+    // console.log('placessss', place)
+
+    // const handleDeletePlace = () => {
+    //     // console.log(id)
+    //     props.deletePlace(place.id);
+    //     console.log("it really happened!")
+    // };
+
+    const handleDeletePlace = (ele) => {
+        console.log(ele)
+        props.deletePlace(ele.id);
     };
 
     const loaded = () => {
@@ -23,7 +38,10 @@ const Home = (props) => {
                         <li>{ele.isLComOwned}</li>
                         <li>{ele.allowPets}</li>
                     </ul> */}
-                    <button onClick=''>✏️</button> <button onClick={()=> handleDeletePlace()}>🗑</button>
+                    <Link to={`/edit-place/${ele.id}`}>
+                        <button> ✏️ </button>
+                    </Link>
+                    <button onClick={()=> handleDeletePlace(ele)}>🗑</button>
                     <br />
                 </div>
     )))

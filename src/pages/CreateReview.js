@@ -3,14 +3,14 @@ import { useState } from "react";
 const CreateReview = (props) => {
     console.log(props)
     const [review, setReview] = useState({
-        name: '',
-        address: '',
-        isBlackOwned: '',
-        isWomanOwned: '',
-        isENMOwned: '',
-        isLComOwned: '',
-        allowsPets: '',
+        isBlackOwned: false,
+        isWomanOwned: false,
+        isENMOwned: false,
+        isLComOwned: false,
+        allowsPets: false,
         hoursOpen: '',
+        rating: '',
+        comment: ''
     });
 
 
@@ -22,14 +22,16 @@ const CreateReview = (props) => {
         evt.preventDefault();
         props.createReview(review)
         setReview({
-            name: '',
-            address: '',
-            isBlackOwned: '',
-            isWomanOwned: '',
-            isENMOwned: '',
-            isLComOwned: '',
-            allowsPets: '',
-            hoursOpen: '',
+        rating: '',
+        comment: '',
+        isBlackOwned: false,
+        isWomanOwned: false,
+        isENMOwned: false,
+        isLComOwned: false,
+        allowsPets: false,
+        hoursOpen: '',
+        
+        hoursOpen: '',
         });
     };
 

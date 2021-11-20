@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import PlaceShow from './pages/PlaceShow';
+import EditPlace from './pages/EditPlace';
 import EditReview from './pages/EditReview';
 import CreateReview from './pages/CreateReview';
 import CreatePlace from './pages/CreatePlace';
@@ -60,15 +61,18 @@ const Main = () => {
     }
     
     const createPlace = async(place) => {
-        await fetch(`${URL}places`, {
+        await fetch(`${URL}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/json',
             },
+            body: JSON.stringify(place),
         });
+        console.log(place)
         getPlaces();
     }
     
+    // do I need an id for review to be attached to place/user?
     const createReview = async(review) => {
         await fetch(`${URL}reviews`, {
             method: 'POST',
@@ -79,7 +83,7 @@ const Main = () => {
         });
         getReviews();
     }
-
+    
     const deleteUser = async (user) => {
         await fetch(`${URL}users`, {
             method: 'DELETE',
@@ -118,8 +122,9 @@ const Main = () => {
                 <Route path='/' element={<Home places={places} createPlace={createPlace} deletePlace={deletePlace}/>} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/create-place' element={<CreatePlace places={places} createPlace={createPlace}/>} />
-                <Route path='/create-review' element={<CreateReview reviews={reviews} createReview={createReview}/>} />
+                <Route path='/create-place' element={<CreatePlace {...places} places={places} createPlace={createPlace}/>} />
+                <Route path='/create-review' element={<CreateReview {...reviews} reviews={reviews} createReview={createReview}/>} />
+                <Route path='/edit-place/:id' element={<EditPlace {...places} places={places}/>} />
                 <Route path='/edit-review/:id' element={<EditReview />} />
                 <Route path='/:id' element={<PlaceShow />} />
                 <Route path='/user-account-profile' element={<UserProfile />} />

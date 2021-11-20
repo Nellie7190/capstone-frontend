@@ -6,11 +6,11 @@ const CreatePlace = (props) => {
     const [place, setPlace] = useState({
         name: '',
         address: '',
-        isBlackOwned: '',
-        isWomanOwned: '',
-        isENMOwned: '',
-        isLComOwned: '',
-        allowsPets: '',
+        isBlackOwned: false,
+        isWomanOwned: false,
+        isENMOwned: false,
+        isLComOwned: false,
+        allowsPets: false,
         hoursOpen: '',
     });
 
@@ -25,11 +25,11 @@ const CreatePlace = (props) => {
         setPlace({
             name: '',
             address: '',
-            isBlackOwned: '',
-            isWomanOwned: '',
-            isENMOwned: '',
-            isLComOwned: '',
-            allowsPets: '',
+            isBlackOwned: false,
+            isWomanOwned: false,
+            isENMOwned: false,
+            isLComOwned: false,
+            allowsPets: false,
             hoursOpen: '',
         });
     };
@@ -37,20 +37,24 @@ const CreatePlace = (props) => {
     return (
         <section>
             <form onSubmit={handleCreateSubmit}>
+                <h3>Required</h3>
                 Name
                 <input 
                     type="text"
                     name="name"
-                    placeholder="Type a NAME"
+                    required='True'
+                    placeholder="Type a PLACE"
                     onChange={handleChange}
                 /><br />
                 Address
                 <input
                     type="text"
                     name="address"
-                    placeholder="Type places ADDRESS"
+                    required='True'
+                    placeholder="Type ADDRESS"
                     onChange={handleChange}
                 /><br />
+                <h3>Optional</h3>
                 Is this place Black Owned?
                 <input
                     type="checkbox"
@@ -85,6 +89,7 @@ const CreatePlace = (props) => {
                 <input
                     type="text"
                     name="hoursOpen"
+                    placeholder="HOURS"
                     onChange={handleChange}
                 />
                 <input type='submit' value="+ Add Place" />

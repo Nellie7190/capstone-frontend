@@ -1,7 +1,28 @@
+import styled from 'styled-components'
+
+const Nav = styled.nav`
+    background-color: rgba(35, 159, 190, 0.863);
+    // position: fixed;
+    margin: 0 auto;
+    // bottom: 0;
+    // right: 0;
+    // left: 0;
+    // height: 5px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+`
 
 const Footer = () => {
     return (
-        <h1> This is the Footer </h1>
+        <Nav>
+            <p>This is the Footer</p>
+            <p>This is the Footer</p>
+            <p>This is the Footer</p>
+        </Nav>
+
     )
 }
 

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState } from 'react'
 
 const CreatePlace = (props) => {
@@ -55,6 +56,13 @@ const CreatePlace = (props) => {
                     onChange={handleChange}
                 /><br />
                 <h3>Optional</h3>
+                Image
+                <input
+                    type="text"
+                    name="image"
+                    placeholder="Type IMAGE"
+                    onChange={handleChange}
+                /><br />
                 Is this place Black Owned?
                 <input
                     type="checkbox"

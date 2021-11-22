@@ -1,8 +1,9 @@
-import Logo from "./Logo";
+// import Logo from "./Logo";
 import styled from 'styled-components'
 import Burger from "./Burger";
 
 const Nav = styled.nav`
+    background-color: rgba(35, 159, 190, 0.863);
     width: 100%;
     height: 55px;
     border-bottom: 2px solid #f1f1f1;
@@ -10,29 +11,29 @@ const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
 
-    Logo{
-        text-align: left;
-    }
     .Logo{
         width: 100%;
         height: 55px;
-        padding: 15px;
+        // margin: 0 auto;
+        // top: 0;
         display: flex;
         justify-content: space-between;
-        text-align: left;
-
     }
 `
 
 const Header = () => {
-    const logo = Logo
+    // const logo = Logo
     return (
         <Nav>
             <div className="Logo">
                 <p>Header</p>
                 <p>Header</p>
-            </div>
+                <p>Header</p>
+                <p>Header</p>
+                <p>Header</p>
             <Burger />
+            {/* <Logo /> */}
+            </div>
         </Nav>
     )
 }

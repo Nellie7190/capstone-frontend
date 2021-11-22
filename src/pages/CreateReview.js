@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CreateReview = (props) => {
     console.log(props)
@@ -40,12 +41,20 @@ const CreateReview = (props) => {
             <form onSubmit={handleCreateSubmit}>
                 <h3>Required</h3>
                 Rating
-                <input 
-                    type="number"
+                <select>
+                    type="text"
                     name="rating"
                     placeholder="Rate 1-5"
                     onChange={handleChange}
-                /><br />
+                    <option value="⭐️">⭐️</option>
+                                    <option value="⭐️⭐️">⭐️⭐️</option>
+                                    <option value="⭐️⭐️⭐️">⭐️⭐️⭐️</option>
+                                    <option value="⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️</option>
+                                    <option value="⭐️⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️⭐️</option>
+                    
+                
+                </select>
+                <br />
                 Comment
                 <input
                     type="textarea"
@@ -90,7 +99,9 @@ const CreateReview = (props) => {
                     name="hoursOpen"
                     onChange={handleChange}
                 />
-                <input type='submit' value="+ Add Review" />
+                <Link to=''>
+                    <input type='submit' value="+ Add Review" />
+                </Link>
             </form>
         </section>
     )

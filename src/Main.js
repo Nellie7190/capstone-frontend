@@ -1,3 +1,4 @@
+// import SubHeader from './components/SubHeader';
 import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -84,6 +85,17 @@ const Main = () => {
         getReviews();
     }
     
+    const editPlace = async (place, id) => {
+        await fetch(`${URL}places/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/json',
+            },
+            body: JSON.stringify(place),
+        });
+        getPlaces();
+    }
+
     const deleteUser = async (user) => {
         await fetch(`${URL}users`, {
             method: 'DELETE',
@@ -95,7 +107,6 @@ const Main = () => {
     }
 
     const deletePlace = async (id) => {
-        console.log(id)
         await fetch(`${URL}places/${id}`, {
             method: 'DELETE',
         });
@@ -119,14 +130,14 @@ const Main = () => {
     return ( 
         <main>
             <Routes>
-                <Route path='/' element={<Home places={places} createPlace={createPlace} deletePlace={deletePlace}/>} />
+                <Route path='/' element={<Home places={places} createPlace={createPlace} editPlace={editPlace} deletePlace={deletePlace}/>} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/create-place' element={<CreatePlace {...places} places={places} createPlace={createPlace}/>} />
                 <Route path='/create-review' element={<CreateReview {...reviews} reviews={reviews} createReview={createReview}/>} />
-                <Route path='/edit-place/:id' element={<EditPlace {...places} places={places}/>} />
+                <Route path='/edit/:name/:id' element={<EditPlace places={places} editPlace={editPlace}{...places}/>} />
                 <Route path='/edit-review/:id' element={<EditReview />} />
-                <Route path='/:id' element={<PlaceShow />} />
+                <Route path='/:name/:id' element={<PlaceShow places={places} reviews={reviews} users={users}/>} />
                 <Route path='/user-account-profile' element={<UserProfile />} />
                 <Route path='/user-reviews' element={<UserReviews />} />
         </Routes>

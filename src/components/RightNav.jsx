@@ -1,11 +1,13 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Ul = styled.ul`
-
+    * {
+    color: red;
+    }
     list-style: none;
     display: flex;
     flex-flow: row nowrap;
-    color: red;
 
     li{
         padding: 18px 50px;
@@ -31,11 +33,17 @@ const RightNav = ({ open }) => {
     return (
         <div>
             <Ul open={open}>
-                <li>Home</li>
+                <Link to='/'>  
+                    <li>Home</li>
+                </Link>
                 <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Login</li>
-                <li>Register</li>
+                <a href="mailto:chanel_803@hotmail.com">
+                    <li>Contact Us</li>
+                </a>
+                <a href="">
+                    <li>Find Other Supportive Sites</li>
+                </a>
+                <li>Login/Logout</li>
             </Ul>
         </div>
     )

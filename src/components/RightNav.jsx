@@ -3,19 +3,20 @@ import { Link } from 'react-router-dom'
 
 const Ul = styled.ul`
     * {
-    color: red;
+    color: black;
+    font-weight: bold;
     }
     list-style: none;
     display: flex;
     flex-flow: row nowrap;
-
+    justify-content: space-between;
     li{
-        padding: 18px 50px;
+        padding: 15px;
     }
 
     @media (max-width: 768px){
         flex-flow: column nowrap;
-        background-color: navy;
+        background-color: rgba(35, 159, 390, 0.663);
         position: fixed;
         transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
         top: 0;
@@ -40,7 +41,7 @@ const RightNav = ({ open }) => {
                 <a href="mailto:chanel_803@hotmail.com">
                     <li>Contact Us</li>
                 </a>
-                <a href="">
+                <a target='#' href="https://www.google.com">
                     <li>Find Other Supportive Sites</li>
                 </a>
                 <li>Login/Logout</li>

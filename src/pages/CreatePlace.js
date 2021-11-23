@@ -84,7 +84,7 @@ const CreatePlace = (props) => {
                 Is this place owned by member of LGBTQIA+ community?
                 <input 
                     type="checkbox"
-                    name="isLCOMOwned"
+                    name="isLComOwned"
                     onChange={handleChange}
                 /><br />
                 Does this place allow pets?

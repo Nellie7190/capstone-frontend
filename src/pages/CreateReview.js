@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CreateReview = (props) => {
-    console.log(props)
+    let { name } = useParams()
+    // let user = []
+
+    // user.push(props.users.filter(props.users.userName))
+
+    console.log(props.users)
     const [review, setReview] = useState({
+        user: '',
+        place: '',
         isBlackOwned: false,
         isWomanOwned: false,
         isENMOwned: false,
@@ -23,6 +32,8 @@ const CreateReview = (props) => {
         evt.preventDefault();
         props.createReview(review)
         setReview({
+        user: '', 
+        place: '',
         rating: '',
         comment: '',
         isBlackOwned: false,
@@ -31,34 +42,60 @@ const CreateReview = (props) => {
         isLComOwned: false,
         allowsPets: false,
         hoursOpen: '',
-        
-        hoursOpen: '',
         });
+        console.log(review)
     };
 
     return (
         <section>
             <form onSubmit={handleCreateSubmit}>
                 <h3>Required</h3>
-                Rating
-                <select>
+                {/* Rating */}
+                {/* <select>
                     type="text"
                     name="rating"
                     placeholder="Rate 1-5"
                     onChange={handleChange}
                     <option value="⭐️">⭐️</option>
-                                    <option value="⭐️⭐️">⭐️⭐️</option>
-                                    <option value="⭐️⭐️⭐️">⭐️⭐️⭐️</option>
-                                    <option value="⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️</option>
-                                    <option value="⭐️⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️⭐️</option>
+                    <option value="⭐️⭐️">⭐️⭐️</option>
+                    <option value="⭐️⭐️⭐️">⭐️⭐️⭐️</option>
+                    <option value="⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️</option>
+                    <option value="⭐️⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️⭐️</option>
                     
                 
+                </select> */}
+                Choose User
+                <select>
+                    {props.users.map(
+                        user => (
+                            <option 
+                            type="text"
+                            name="user"
+                            placeholder="Choose User"
+                            onChange={handleChange} value=''>{user.userName}</option>
+                        )
+                    )}
                 </select>
+                <input 
+                type="hidden"
+                name="place"
+                value={name}
+                onChange={handleChange}
+                />
+                <br />
+                Rating
+                <input 
+                type="number"
+                name="rating"
+                required='True'
+                onChange={handleChange}
+                />
                 <br />
                 Comment
                 <input
                     type="textarea"
                     name="comment"
+                    required='True'
                     placeholder="Why this rating?"
                     onChange={handleChange}
                 /><br />
@@ -99,9 +136,9 @@ const CreateReview = (props) => {
                     name="hoursOpen"
                     onChange={handleChange}
                 />
-                <Link to=''>
+                {/* <Link to=''> */}
                     <input type='submit' value="+ Add Review" />
-                </Link>
+                {/* </Link> */}
             </form>
         </section>
     )

@@ -11,6 +11,7 @@ import CreatePlace from './pages/CreatePlace';
 import UserReviews from './pages/UserReviews'
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import axios from 'axios';
 
 const Main = () => {
     // const [places, setPlaces] = useState(null);
@@ -50,6 +51,10 @@ const Main = () => {
             setReviews(data);
         };
     
+        useEffect(() => getUsers(), []);
+        useEffect(() => getPlaces(), []);
+        useEffect(() => getReviews(), []);
+
     const createUser = async(user) => {
         await fetch(`${URL}users`, {
             method: 'POST',
@@ -62,6 +67,7 @@ const Main = () => {
     }
     
     const createPlace = async(place) => {
+        //url/places/id? or //url/reviews
         await fetch(`${URL}`, {
             method: 'POST',
             headers: {
@@ -74,7 +80,7 @@ const Main = () => {
     }
     
     // do I need an id for review to be attached to place/user?
-    const createReview = async(review) => {
+    const createReview = async(review, id) => {
         await fetch(`${URL}reviews`, {
             method: 'POST',
             headers: {
@@ -84,6 +90,24 @@ const Main = () => {
         });
         getReviews();
     }
+    // const createReview = async() => {
+    //     axios.post(`${URL}reviews`, {
+    //         isBlackOwned: isBlackOwned,
+    //         isWomanOwned: isWomanOwned,
+    //         isENMOwned: isENMOwned,
+    //         isLComOwned: isLComOwned,
+    //         allowsPets: allowsPets,
+    //         hoursOpen: hoursOpen,
+    //         rating: rating,
+    //         comment: comment,
+    //         place: places.id,
+    //     })
+    //     .then((res) => {
+    //         axios.get(`${URL}/reviews`).then(res => {
+    //             setReviews(res.data)
+    //         })
+    //     })
+    // }
     
     const editPlace = async (place, id) => {
         await fetch(`${URL}places/${id}`, {
@@ -96,15 +120,15 @@ const Main = () => {
         getPlaces();
     }
 
-    const deleteUser = async (user) => {
-        await fetch(`${URL}users`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'Application/json',
-            },
-        });
-        getUsers();
-    }
+    // const deleteUser = async (user) => {
+    //     await fetch(`${URL}users`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             'Content-Type': 'Application/json',
+    //         },
+    //     });
+    //     getUsers();
+    // }
 
     const deletePlace = async (id) => {
         await fetch(`${URL}places/${id}`, {
@@ -123,21 +147,17 @@ const Main = () => {
         getReviews();
     }
 
-        useEffect(() => getUsers(), []);
-        useEffect(() => getPlaces(), []);
-        useEffect(() => getReviews(), []);
-
     return ( 
         <main>
             <Routes>
                 <Route path='/' element={<Home places={places} createPlace={createPlace} editPlace={editPlace} deletePlace={deletePlace}/>} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Login users={users} createUser={createUser}/>} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/create-place' element={<CreatePlace {...places} places={places} createPlace={createPlace}/>} />
-                <Route path='/create-review' element={<CreateReview {...reviews} reviews={reviews} createReview={createReview}/>} />
-                <Route path='/edit/:name/:id' element={<EditPlace places={places} editPlace={editPlace}{...places}/>} />
+                <Route path='/:name/create-review' element={<CreateReview {...reviews} reviews={reviews} createReview={createReview} users={users}/>} />
+                <Route path='/edit-place/:name/:id' element={<EditPlace places={places} editPlace={editPlace}{...places}/>} />
                 <Route path='/edit-review/:id' element={<EditReview />} />
-                <Route path='/:name/:id' element={<PlaceShow places={places} reviews={reviews} users={users}/>} />
+                <Route path='/:name/:id' element={<PlaceShow places={places} reviews={reviews} deleteReview={deleteReview}users={users}/>} />
                 <Route path='/user-account-profile' element={<UserProfile />} />
                 <Route path='/user-reviews' element={<UserReviews />} />
         </Routes>

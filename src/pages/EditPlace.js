@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const EditPlace = (props) => {
+    let navigate = useNavigate();
     let { id, name } = useParams()
     console.log(name)
     // console.log(props.editPlace)
@@ -19,7 +20,7 @@ const EditPlace = (props) => {
         evt.preventDefault();
         props.editPlace(editForm, id);
         console.log(place.name)
-        // Navigate(-1)
+        navigate(-1)
     }
 
     return (

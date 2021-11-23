@@ -54,6 +54,7 @@ const PlaceShow = (props) => {
                 <h1> {place.name} <Link to={`/edit-place/${name}/${id}`}><button>✏️</button></Link></h1>
                 <img src={place.image} alt="no image to display" />
                 <h2>{place.address}</h2>
+                <p>{place.description}</p>
                 Hours:
                 <h2>{place.hoursOpen}</h2>
                 <Link to={`/${place.name}/create-review`}>
@@ -70,10 +71,10 @@ const PlaceShow = (props) => {
                             {/* <p>{user.userName}</p> */}
                             <h3>Rating: {review.rating}</h3>
                             <h3>{review.comment}</h3>
-                            <Link to={`/edit-review/${review.name}/${review.id}`}>
+                            <Link to={`/edit-review/${place.name}/${review.id}`}>
                                     <button> ✏️ </button>
-                                </Link>
-                                <button onClick={()=> handleDeleteReview(review)}>🗑</button>
+                            </Link>
+                            <button onClick={()=> handleDeleteReview(review)}>🗑</button>
                         </div>
 
                     ))

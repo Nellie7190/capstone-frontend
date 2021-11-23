@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 const EditPlace = (props) => {
     let navigate = useNavigate();
     let { id, name } = useParams()
-    console.log(name)
-    // console.log(props.editPlace)
     const place = props.places.find(place => place.name === name)
-    console.log(place)
     const [editForm, setEditForm] = useState(place);
 
     const handleChange = evt => {
@@ -19,7 +16,6 @@ const EditPlace = (props) => {
     const handleSubmit = evt => {
         evt.preventDefault();
         props.editPlace(editForm, id);
-        console.log(place.name)
         navigate(-1)
     }
 
@@ -42,6 +38,15 @@ const EditPlace = (props) => {
                     name="address"
                     required='True'
                     value={editForm.address}
+                    placeholder="Type ADDRESS"
+                    onChange={handleChange}
+                /><br />
+                Description:
+                <input
+                    type="text"
+                    name="description"
+                    required='True'
+                    value={editForm.description}
                     placeholder="Type ADDRESS"
                     onChange={handleChange}
                 /><br />

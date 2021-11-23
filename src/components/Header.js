@@ -17,8 +17,9 @@ const Nav = styled.nav`
         height: 55px;
         // margin: 0 auto;
         // top: 0;
+        text-align: center;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 `
 
@@ -27,9 +28,7 @@ const Header = () => {
     return (
         <Nav>
             <div className="Logo">
-                <p>Header</p>
-                <p>Header</p>
-                <p>Header</p>
+                <h1>safePlace</h1>
             <Burger />
             {/* <Logo /> */}
             </div>

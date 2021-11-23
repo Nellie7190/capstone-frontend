@@ -41,7 +41,7 @@ const RightNav = ({ open }) => {
                 <a href="mailto:chanel_803@hotmail.com">
                     <li>Contact Us</li>
                 </a>
-                <a target='#' href="https://www.google.com">
+                <a target='#' href="https://pensive-knuth-7d02c1.netlify.app/">
                     <li>Find Other Supportive Sites</li>
                 </a>
                 <li>Login/Logout</li>

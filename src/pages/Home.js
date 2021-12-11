@@ -6,6 +6,9 @@ const Div = styled.div`
     ul {
         list-style: none;
     }
+    .Intro {
+        text-align: center;
+    }
     .container {
         background: linear-gradient(to bottom right, rgb(35, 159, 590, 0.663), white);
         text-align: center;
@@ -90,7 +93,11 @@ const Home = (props) => {
                     }
                     return (
                         <>
-                        
+                            <div className='Intro'> 
+                                <h1>Welcome</h1>
+                                <h2>This site is for all minority groups to find safe place to go</h2>
+                            </div>
+
                             {/* <br /> */}
                             <div className='container' key={key}>
                                     <h1>{val.name}</h1>

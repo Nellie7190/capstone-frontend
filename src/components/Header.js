@@ -28,7 +28,7 @@ const Header = () => {
     return (
         <Nav>
             <div className="Logo">
-                <h1>safePlace</h1>
+                <h1>safeSpace</h1>
             <Burger />
             {/* <Logo /> */}
             </div>

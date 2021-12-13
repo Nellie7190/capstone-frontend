@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import axios from "axios";
 
 const CreateReview = (props) => {
     let { name } = useParams()

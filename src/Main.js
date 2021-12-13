@@ -11,7 +11,6 @@ import CreatePlace from './pages/CreatePlace';
 import UserReviews from './pages/UserReviews'
 import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from "react";
-// import axios from 'axios';
 
 const Main = () => {
     // const [places, setPlaces] = useState(null);
